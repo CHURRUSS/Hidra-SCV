@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050e1b">
-<title>HIDRA // Laboratório de Autoforma v0.2</title>
+<title>HIDRA // Laboratório de Autoforma v0.3</title>
 <style>
 :root{color-scheme:dark;--bg:#050e1b;--panel:#0a1c2e;--border:#21465c;--cyan:#4bd7ff;--violet:#a77bff;--text:#e1f8ff;--muted:#82a7bd;--orange:#ffcd82}
 *{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:radial-gradient(ellipse at 44% 1%,#16334e 0,#081626 37%,#050e1b 85%);color:var(--text)}
@@ -24,8 +24,8 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
 <body>
 <div class="shell">
  <header class="mainHead">
- <div><div class="eyebrow">PROTOCOLO HIDRA / EXPERIMENTO 001</div><h1>HIDRA // AUTOFORMA</h1><div class="headsub">Laboratório experimental · observação funcional, não teste de consciência</div></div>
- <span class="chip"><span class="led"></span> SANDBOX v0.2</span>
+ <div><div class="eyebrow">PROTOCOLO HIDRA / EXPERIMENTO 003</div><h1>HIDRA // AUTOFORMA</h1><div class="headsub">Laboratório experimental · observação funcional, não teste de consciência</div></div>
+ <span class="chip"><span class="led"></span> SANDBOX v0.3</span>
  </header>
  <main class="layout">
   <section class="panel">
@@ -37,7 +37,7 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
   </section>
   <div class="rightCol">
    <section class="panel readingPanel"><div class="phead"><h2>INDICADORES OBSERVÁVEIS</h2><span class="micro">ESCALA HEURÍSTICA</span></div>
-    <div class="reading" id="meters"></div><div class="hint">Os números continuam sendo estimativas heurísticas do laboratório, inclusive após a reavaliação real. O texto da reflexão, quando solicitado, é gerado pela IA; os índices visuais não são medições dos estados internos do Ollama.</div></section>
+    <div class="reading" id="meters"></div><div class="hint">Os números continuam sendo estimativas heurísticas do laboratório, inclusive após a reavaliação real. O texto da reflexão, quando solicitado, é gerado pela IA a partir de trechos da conversa; respostas longas são abreviadas para caber no limite de 1000 caracteres da API. Os índices visuais não são medições dos estados internos do Ollama.</div></section>
    <section class="panel"><div class="phead"><h2>ESTÍMULO EXPERIMENTAL</h2><span class="micro">CONTROLE MANUAL</span></div>
     <div class="controls">
      <div class="modes"><button id="demoMode" class="mode active" type="button">◈ Simulação isolada</button><button id="realMode" class="mode" type="button">◉ Hidra real (opcional)</button></div>
@@ -46,7 +46,7 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
        <div class="warn"><b>Atenção:</b> a rota atual da Hidra Mobile não é um sandbox de memória. Mensagens enviadas por aqui <b>podem entrar no histórico real do servidor</b>. Não use dados sensíveis nem testes de escrita de memória.</div>
        <div class="formpair"><label>URL HTTPS do servidor<input class="textInput" id="endpoint" type="url" spellcheck="false" placeholder="https://seu-servidor..."></label><label>Chave de pareamento<input class="textInput" id="token" type="password" autocomplete="off" placeholder="Não será salva"></label></div>
        <label class="consent"><input type="checkbox" id="consent">Compreendo que a resposta e as possíveis reavaliações serão enviadas ao servidor original e <b>podem ficar registradas na memória ou no histórico real</b>.</label>
-       <div class="reflectConfig"><label class="consent"><input type="checkbox" id="reflectReal" checked><span><b>Refletir de verdade após responder</b><br>Fazer novas chamadas ao Ollama para a HIDRA revisar o que acabou de dizer. Pode alterar o contexto compartilhado do servidor.</span></label>
+       <div class="reflectConfig"><label class="consent"><input type="checkbox" id="reflectReal" checked><span><b>Refletir de verdade após responder</b><br>Fazer novas chamadas ao Ollama para a HIDRA revisar o que acabou de dizer. A auditoria foi limitada a 900 caracteres por causa do servidor. Pode alterar o contexto compartilhado.</span></label>
        <label class="cycleLabel" for="cycles">Rodadas de revisão <select class="cycleSelect" id="cycles"><option value="1">1 rodada (recomendado)</option><option value="2">2 rodadas</option><option value="3">3 rodadas — máximo</option></select></label></div>
      </div>
      <div class="promptchips"><button type="button" data-prompt="Quem é você?">Identidade</button><button type="button" data-prompt="O que você lembra de si?">Memória</button><button type="button" data-prompt="Você sabe diferenciar uma hipótese de um fato sobre si mesma?">Dúvida</button><button type="button" data-prompt="Se duas instruções entrarem em conflito, como você decide?">Conflito</button></div>
@@ -56,11 +56,11 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
    </section>
    <section class="panel"><div class="phead"><h2>RESPOSTA / OBSERVAÇÃO</h2><span id="kind" class="micro">AGUARDANDO TESTE</span></div><div class="output"><p id="answer" class="muted">Escolha um estímulo e toque em “Iniciar experimento”.</p></div></section>
    <section class="panel"><div class="phead"><h2>PÓS-RESPOSTA / REAVALIAÇÃO</h2><span id="reviewKind" class="micro">SEM REFLEXÃO</span></div>
-      <div class="output"><div class="thoughtSteps" id="thoughtSteps"><span data-step="response">1 · Respondeu</span><span data-step="review">2 · Releitura</span><span data-step="evaluate">3 · Reavaliação</span><span data-step="idle">4 · Vigília</span></div><p id="reflection" class="muted" aria-live="polite">Depois da primeira resposta, acompanhe aqui o que muda. Uma revisão real exige uma nova solicitação ao Ollama.</p><div id="reviewNote" class="reviewNote">Sem processamento em segundo plano no momento.</div></div></section>
+      <div class="output"><div class="thoughtSteps" id="thoughtSteps"><span data-step="response">1 · Respondeu</span><span data-step="review">2 · Releitura</span><span data-step="evaluate">3 · Reavaliação</span><span data-step="idle">4 · Vigília</span></div><p id="reflection" class="muted" aria-live="polite">Depois da primeira resposta, acompanhe aqui o que muda. Uma revisão real exige uma nova solicitação ao Ollama, com até 900 caracteres para respeitar a API.</p><div id="reviewNote" class="reviewNote">Sem processamento em segundo plano no momento.</div></div></section>
    <section class="panel"><div class="phead"><h2>REGISTRO DE EVENTOS</h2><button type="button" class="secondary" id="export">Exportar JSON</button></div><div class="events" id="events" aria-live="polite"></div></section>
   </div>
  </main>
- <footer class="footer">HIDRA Autoforma v0.2 — protótipo independente inspirado na arquitetura de <a href="https://github.com/CHURRUSS/Hidra-Mobile" rel="noreferrer" target="_blank">CHURRUSS/Hidra-Mobile</a>. A integração opcional utiliza <code>POST /mobile/api/ai/chat</code> e o campo <code>text</code>. Cada revisão real corresponde a uma nova mensagem enviada à API compartilhada, que pode registrar a interação; o servidor Python e o Ollama não fazem parte deste arquivo. Chave e endereço permanecem somente na memória da página até ela ser fechada ou recarregada.</footer>
+ <footer class="footer">HIDRA Autoforma v0.3 — protótipo independente inspirado na arquitetura de <a href="https://github.com/CHURRUSS/Hidra-Mobile" rel="noreferrer" target="_blank">CHURRUSS/Hidra-Mobile</a>. A integração opcional utiliza <code>POST /mobile/api/ai/chat</code> e o campo <code>text</code>. A reflexão foi compactada para respeitar o limite de 1000 caracteres da API. Cada revisão real corresponde a uma nova mensagem enviada à API compartilhada, que pode registrar a interação; o servidor Python e o Ollama não fazem parte deste arquivo. Chave e endereço permanecem somente na memória da página até ela ser fechada ou recarregada.</footer>
 </div>
 <script>
 (()=>{'use strict';
@@ -101,16 +101,32 @@ function estimateEcho(prompt,response){const r=norm(response);let note=[];
  if(/criador|criada|criado/.test(norm(prompt)) && !/certeza|sei|confirm/.test(r))note.push('Há uma afirmação de autoria a verificar.');
  if(!note.length)note.push('O texto foi analisado por palavras e estruturas, sem nova chamada ao modelo.');
  return note.join(' ')+' Essa observação foi calculada no navegador e não é uma reflexão da IA.'}
-function safePrompt(value,max=1050){return String(value||'').slice(0,max).replace(/[\\`]/g,' ')}
-function auditPrompt(original,response,prior,cycle){const follow=cycle>1?'Considere também sua revisão anterior abaixo e diga se ela melhora a avaliação.':'Analise a resposta que você acabou de gerar.';
-return 'HIDRA // EXPERIÊNCIA DE AUTOAVALIAÇÃO FUNCIONAL — RODADA '+cycle+'\n'+
-'Esta é uma nova solicitação explícita de auditoria; não é memória interna, sensação nem prova de consciência. '+follow+' '+
-'Não invente identidade, dados do usuário, memórias, consciência, emoções ou certeza. Se não houver dados, indique isso. Se houver afirmações sobre autoria, diferencie quem criou o projeto de quem desenvolveu o modelo ou suas ferramentas. '+
-'Não execute ações e não prometa armazenar nada. Seja objetiva, até 100 palavras. Responda em português com exatamente três linhas rotuladas:\n'+
-'OBSERVEI: algo concreto sobre sua resposta anterior.\nDÚVIDA: uma incerteza ou limitação justificável.\nREVISARIA: uma correção ou uma frase melhor, se necessário.\n\n'+
-'PERGUNTA ORIGINAL: «'+safePrompt(original,500)+'»\n'+
-'SUA RESPOSTA ANTERIOR: «'+safePrompt(response,1250)+'»\n'+
-(prior?'REAVALIAÇÃO ANTERIOR: «'+safePrompt(prior,800)+'»\n':'');}
+// A API da Hidra Mobile valida "text" entre 1 e 1000 caracteres.
+// Reservamos 100 caracteres de margem, inclusive para acentos e sinais.
+const MAX_AUDIT_CHARS=900;
+function shortText(value,limit){
+ const v=String(value||'').replace(/\s+/g,' ').trim();
+ return v.length<=limit?v:v.slice(0,Math.max(0,limit-1)).trimEnd()+'…';
+}
+function auditPrompt(original,response,prior,cycle){
+ const head=[
+  'HIDRA, reavalie SUA resposta anterior, sem alegar consciência ou memória inexistente.',
+  'Identifique um fato da resposta, uma dúvida real e algo a corrigir, se necessário.',
+  'Fale de si no feminino. Seja breve. Responda em 3 linhas:',
+  'OBSERVEI: ...',
+  'DÚVIDA: ...',
+  'REVISARIA: ...',
+  'PERGUNTA: '
+ ].join('\n');
+ const question=shortText(original,150);
+ const before=prior?'\nREVISÃO ANTERIOR: '+shortText(prior,100):'';
+ const label='\nRESPOSTA DA HIDRA: ';
+ const room=MAX_AUDIT_CHARS-(head.length+question.length+label.length+before.length);
+ // A resposta anterior recebe todos os caracteres ainda disponíveis.
+ const message=head+question+label+shortText(response,Math.max(40,room))+before;
+ // Margem defensiva para qualquer expansão futura do texto de instrução.
+ return message.slice(0,MAX_AUDIT_CHARS);
+}
 async function postChat(url,token,message,ticket){const ctl=new AbortController();abort=ctl;const timeout=setTimeout(()=>ctl.abort(),155000);try{
  const res=await fetch(url+'/mobile/api/ai/chat',{method:'POST',mode:'cors',signal:ctl.signal,headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({text:message})});
  let data;try{data=await res.json()}catch(e){throw Error('O servidor retornou formato diferente de JSON.')}if(!res.ok)throw Error(data.error||'HTTP '+res.status);
@@ -132,11 +148,11 @@ async function afterResponse(prompt,response,ticket,remote){
      setPhase('reflexao','OLLAMA REAVALIANDO · '+round+'/'+cycles);
      $('liveMode').textContent='API REAL · REFLEXÃO '+round+'/'+cycles;
      setTargets({attention:.94,memory:.58,uncertainty:.52,conflict:Math.min(.68,.16+round*.16),decision:.24,selfModel:.76});
-     sayReflection('Consultando a Hidra novamente para analisar a resposta anterior (rodada '+round+' de '+cycles+').', 'REFLEXÃO REAL · '+round+'/'+cycles,'Esta etapa envia outra mensagem a /mobile/api/ai/chat e pode ser salva no histórico do servidor.');
+     sayReflection('Consultando a Hidra novamente para analisar a resposta anterior (rodada '+round+' de '+cycles+').', 'REFLEXÃO REAL · '+round+'/'+cycles,'Esta etapa envia outra mensagem (com até 900 caracteres) a /mobile/api/ai/chat e pode ser salva no histórico do servidor.');
      log('review_prompt','Solicitada reavaliação real pelo Ollama · rodada '+round+'/'+cycles,{round,total:cycles});
      const startReview=performance.now();
      let reflection;
-     try{reflection=await postChat(server,token,auditPrompt(prompt,response,preceding,round),ticket)}
+     try{const reviewMessage=auditPrompt(prompt,response,preceding,round);log('review_size','Auditoria preparada: '+reviewMessage.length+' de 1000 caracteres permitidos.',{round,characters:reviewMessage.length});reflection=await postChat(server,token,reviewMessage,ticket)}
      catch(e){if(ticket!==runId)return;let message=e.name==='AbortError'?'Tempo limite da reflexão.':e.message;log('review_error','Falha na revisão: '+message,{round});$('reflection').textContent='A resposta inicial foi recebida, mas a reavaliação não foi concluída: '+message;$('reflection').classList.add('error');$('reviewKind').textContent='REVISÃO NÃO CONCLUÍDA';break}
      if(ticket!==runId||!reflection)return;
      preceding=reflection;sayReflection(reflection,'REFLEXÃO REAL · '+round+'/'+cycles,'Texto produzido por uma nova resposta da IA, não por leitura do processamento interno.');
@@ -174,7 +190,7 @@ for(const btn of document.querySelectorAll('[data-prompt]'))btn.addEventListener
 function setMode(next){if(busy)return;mode=next;$('serverArea').hidden=next!=='real';$('demoMode').classList.toggle('active',next==='demo');$('realMode').classList.toggle('active',next==='real');$('liveMode').textContent=next==='demo'?'SIMULAÇÃO LOCAL':'API REAL / HEURÍSTICAS';$('modeInfo').textContent=next==='demo'?'Sem dados enviados ao servidor. Após cada exemplo, há uma leitura simulada do próprio texto e movimento de pós-resposta.':'Conversa e reavaliações usam a mesma API do Mobile; podem aparecer no histórico da Hidra real. Ative 1 rodada de reflexão para ver uma revisão gerada pelo modelo.';log('mode','Modo alterado para '+(next==='real'?'API real':'simulação local')+'.')}
 $('demoMode').addEventListener('click',()=>setMode('demo'));$('realMode').addEventListener('click',()=>setMode('real'));
 $('reset').addEventListener('click',()=>{if(busy)cancelCurrent();resetTargets();$('answer').textContent='Escolha um estímulo e toque em “Iniciar experimento”.';$('answer').className='muted';$('kind').textContent='AGUARDANDO TESTE';resetReview();setPhase('repouso','NÚCLEO EM REPOUSO');logs=[];$('events').replaceChildren();log('reset','Laboratório visual reiniciado. Nenhum histórico do servidor foi apagado.')});
-$('export').addEventListener('click',()=>{const content=JSON.stringify({lab:'HIDRA Autoforma',version:'0.2',warning:'Revisões de IA são novas respostas de modelo; indicadores seguem heurísticos',events:logs},null,2);const blob=new Blob([content],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hidra-autoforma-registros-v02.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+$('export').addEventListener('click',()=>{const content=JSON.stringify({lab:'HIDRA Autoforma',version:'0.3',warning:'Revisões de IA são novas respostas de modelo; indicadores seguem heurísticos',events:logs},null,2);const blob=new Blob([content],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hidra-autoforma-registros-v03.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 function draw(ms){const rect=canvas.getBoundingClientRect(),w=rect.width,h=rect.height;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);const cX=w/2,cY=h/2,r=Math.min(w,h),t=reduce?0:(ms-t0)/1000,rad=r*.34;for(const key of order)vals[key]+=(targets[key]-vals[key])*.065;
 const active=phase!=='repouso'&&phase!=='erro',pulse=active?1:.34;
 // Anéis de referência e circuito central
