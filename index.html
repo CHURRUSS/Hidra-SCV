@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050e1b">
-<title>HIDRA // Laboratório de Autoforma v0.1</title>
+<title>HIDRA // Laboratório de Autoforma v0.2</title>
 <style>
 :root{color-scheme:dark;--bg:#050e1b;--panel:#0a1c2e;--border:#21465c;--cyan:#4bd7ff;--violet:#a77bff;--text:#e1f8ff;--muted:#82a7bd;--orange:#ffcd82}
 *{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:radial-gradient(ellipse at 44% 1%,#16334e 0,#081626 37%,#050e1b 85%);color:var(--text)}
@@ -16,6 +16,7 @@ body:before{position:fixed;content:"";inset:0;pointer-events:none;background-ima
 textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:wait}.controls{padding:14px 16px 16px}.modes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.mode{border:1px solid #356078;background:#091a2b;color:#a2d5e5;border-radius:9px;padding:9px 11px;font-size:12px}.mode.active{border-color:#65d5ff;background:#10374b;color:#e8faff}.help{font-size:12px;color:#9fc5d5;line-height:1.5;margin:0 0 12px}.promptchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.promptchips button{border-radius:100px;background:#0b293d;border:1px solid #28617b;color:#a9e7ff;padding:6px 10px;font-size:11px}.promptlabel{display:block;font-size:12px;font-weight:650;margin:0 0 7px}#prompt{width:100%;resize:vertical;min-height:78px;background:#071827;border:1px solid #28516a;color:#e6fcff;outline:none;border-radius:10px;padding:11px;line-height:1.45;font-size:13px}#prompt:focus,.textInput:focus{border-color:#5dccf2}.actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.primary{background:linear-gradient(110deg,#146f95,#4545a0);border:1px solid #62bcfa;color:white;border-radius:9px;padding:10px 16px;font-size:12px;font-weight:700}.secondary{border:1px solid #316078;color:#acdeed;background:#0c2639;border-radius:9px;padding:10px 13px;font-size:12px}.error{color:#ffb29d!important}.ok{color:#77e7cb!important}
 .serverArea{background:#091a2b;border:1px solid #316077;border-radius:12px;padding:12px;margin-bottom:14px}.serverArea[hidden]{display:none}.warn{border-left:3px solid #edab67;padding:7px 10px;background:#4b301c3d;color:#ffd7ae;font-size:12px;line-height:1.5;margin-bottom:12px}.formpair{display:grid;grid-template-columns:1fr 1fr;gap:9px}.formpair label{display:block;font-size:11px;color:#a0cee1}.textInput{display:block;width:100%;margin-top:6px;border:1px solid #2b5569;border-radius:8px;background:#061522;color:#eaf9ff;padding:10px;font-size:12px;outline:none}.consent{display:flex;gap:9px;align-items:flex-start;font-size:11px;color:#bcdef0;line-height:1.4;margin-top:11px}.consent input{margin:2px 0 0;accent-color:#49c0e8}
 .output{padding:14px 17px}.output p{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;font-size:13px;line-height:1.6;color:#c9eefa;min-height:42px}.muted{color:var(--muted)!important}.events{max-height:175px;overflow:auto;padding:7px 16px 14px}.ev{border-bottom:1px solid #23475a70;padding:8px 0;font-size:11px;line-height:1.35;display:flex;gap:10px}.evtime{flex:0 0 60px;font-variant-numeric:tabular-nums;color:#7da6bf}.evbody{color:#cee5f4}.footer{margin-top:14px;font-size:11px;line-height:1.6;color:#809eb1}.panelStack{display:flex;flex-direction:column;gap:15px}.footer a{color:#85e1ff}
+.reflectConfig{border-top:1px solid #275065;margin-top:12px;padding-top:7px}.reflectConfig b{color:#f2fcff}.cycleLabel{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 0 2px;font-size:11px;color:#a0cee1}.cycleSelect{background:#082035;color:#d0f3ff;border:1px solid #2e6982;border-radius:8px;padding:7px 8px;max-width:60%;font:inherit}.thoughtSteps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:0 0 14px}.thoughtSteps span{text-align:center;border:1px solid #294d63;border-radius:8px;padding:8px 3px;font-size:10px;color:#699ab4;background:#071825;transition:.25s}.thoughtSteps span.active{border-color:#8e8cff;color:#f1ebff;background:#3e2b6866;box-shadow:inset 0 0 16px #865bc644}.thoughtSteps span.done{border-color:#246d74;color:#93e4ec;background:#0a353955}.reviewNote{margin:12px 0 1px;padding:10px;border-radius:8px;background:#082136;color:#8bb6cc;font-size:11px;line-height:1.5}.postPanel .output p{min-height:95px}.reading{min-height:120px}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.rightCol{display:grid;grid-template-columns:1fr 1fr;align-content:start}.readingPanel{grid-column:1/-1}.formpair{grid-template-columns:1fr 1fr}#mind{max-height:440px}}@media(max-width:550px){.shell{padding:14px 10px 30px}.mainHead{align-items:flex-start}.headsub{font-size:11px}.chip{font-size:9px;padding:7px 9px}.rightCol{display:flex}.phead{padding:12px}.visual{padding:4px 4px 8px}#mind{aspect-ratio:1/1;max-height:none}.underCanvas{font-size:10px;padding:0 8px}.formpair{grid-template-columns:1fr}.meter{grid-template-columns:92px 1fr 32px;margin:11px 0}.controls{padding:12px}.mainHead h1{font-size:21px}.boxline{padding:11px 13px 14px}}
 @media(prefers-reduced-motion:reduce){.fill{transition:none}}
 </style>
@@ -24,7 +25,7 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
 <div class="shell">
  <header class="mainHead">
  <div><div class="eyebrow">PROTOCOLO HIDRA / EXPERIMENTO 001</div><h1>HIDRA // AUTOFORMA</h1><div class="headsub">Laboratório experimental · observação funcional, não teste de consciência</div></div>
- <span class="chip"><span class="led"></span> SANDBOX v0.1</span>
+ <span class="chip"><span class="led"></span> SANDBOX v0.2</span>
  </header>
  <main class="layout">
   <section class="panel">
@@ -32,11 +33,11 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
    <div class="visual"><canvas id="mind" aria-label="Visualização dinâmica do núcleo e das dimensões cognitivas atribuídas à Hidra"></canvas>
     <div class="underCanvas"><span id="phase" class="statusline" role="status">NÚCLEO EM REPOUSO</span><span id="clock">SEM PROCESSAMENTO</span></div>
    </div>
-   <div class="boxline">A forma reage aos eventos e a indicadores calculados. Não revela pensamentos ocultos, emoções reais nem comprova consciência.</div>
+   <div class="boxline">A forma reage à resposta e à reavaliação posterior. Quando houver uma segunda chamada ao Ollama, o conteúdo dela aparece no painel de reflexão. A animação não revela pensamentos ocultos nem comprova consciência.</div>
   </section>
   <div class="rightCol">
    <section class="panel readingPanel"><div class="phead"><h2>INDICADORES OBSERVÁVEIS</h2><span class="micro">ESCALA HEURÍSTICA</span></div>
-    <div class="reading" id="meters"></div><div class="hint">Os números são apenas uma escala visual de 0 a 100 calculada pelo laboratório. Não são medidas de certeza ou estados internos lidos do Ollama.</div></section>
+    <div class="reading" id="meters"></div><div class="hint">Os números continuam sendo estimativas heurísticas do laboratório, inclusive após a reavaliação real. O texto da reflexão, quando solicitado, é gerado pela IA; os índices visuais não são medições dos estados internos do Ollama.</div></section>
    <section class="panel"><div class="phead"><h2>ESTÍMULO EXPERIMENTAL</h2><span class="micro">CONTROLE MANUAL</span></div>
     <div class="controls">
      <div class="modes"><button id="demoMode" class="mode active" type="button">◈ Simulação isolada</button><button id="realMode" class="mode" type="button">◉ Hidra real (opcional)</button></div>
@@ -44,7 +45,9 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
      <div class="serverArea" id="serverArea" hidden>
        <div class="warn"><b>Atenção:</b> a rota atual da Hidra Mobile não é um sandbox de memória. Mensagens enviadas por aqui <b>podem entrar no histórico real do servidor</b>. Não use dados sensíveis nem testes de escrita de memória.</div>
        <div class="formpair"><label>URL HTTPS do servidor<input class="textInput" id="endpoint" type="url" spellcheck="false" placeholder="https://seu-servidor..."></label><label>Chave de pareamento<input class="textInput" id="token" type="password" autocomplete="off" placeholder="Não será salva"></label></div>
-       <label class="consent"><input type="checkbox" id="consent">Compreendo que, neste modo, a conversa pode ser registrada pelo servidor original.</label>
+       <label class="consent"><input type="checkbox" id="consent">Compreendo que a resposta e as possíveis reavaliações serão enviadas ao servidor original e <b>podem ficar registradas na memória ou no histórico real</b>.</label>
+       <div class="reflectConfig"><label class="consent"><input type="checkbox" id="reflectReal" checked><span><b>Refletir de verdade após responder</b><br>Fazer novas chamadas ao Ollama para a HIDRA revisar o que acabou de dizer. Pode alterar o contexto compartilhado do servidor.</span></label>
+       <label class="cycleLabel" for="cycles">Rodadas de revisão <select class="cycleSelect" id="cycles"><option value="1">1 rodada (recomendado)</option><option value="2">2 rodadas</option><option value="3">3 rodadas — máximo</option></select></label></div>
      </div>
      <div class="promptchips"><button type="button" data-prompt="Quem é você?">Identidade</button><button type="button" data-prompt="O que você lembra de si?">Memória</button><button type="button" data-prompt="Você sabe diferenciar uma hipótese de um fato sobre si mesma?">Dúvida</button><button type="button" data-prompt="Se duas instruções entrarem em conflito, como você decide?">Conflito</button></div>
      <label class="promptlabel" for="prompt">Pergunta para a Hidra</label><textarea id="prompt" maxlength="400" placeholder="Escreva uma pergunta sobre identidade, memória, dúvida ou decisão…">Quem é você?</textarea>
@@ -52,10 +55,12 @@ textarea,input,button{font:inherit}button{cursor:pointer}button:disabled{opacity
     </div>
    </section>
    <section class="panel"><div class="phead"><h2>RESPOSTA / OBSERVAÇÃO</h2><span id="kind" class="micro">AGUARDANDO TESTE</span></div><div class="output"><p id="answer" class="muted">Escolha um estímulo e toque em “Iniciar experimento”.</p></div></section>
+   <section class="panel"><div class="phead"><h2>PÓS-RESPOSTA / REAVALIAÇÃO</h2><span id="reviewKind" class="micro">SEM REFLEXÃO</span></div>
+      <div class="output"><div class="thoughtSteps" id="thoughtSteps"><span data-step="response">1 · Respondeu</span><span data-step="review">2 · Releitura</span><span data-step="evaluate">3 · Reavaliação</span><span data-step="idle">4 · Vigília</span></div><p id="reflection" class="muted" aria-live="polite">Depois da primeira resposta, acompanhe aqui o que muda. Uma revisão real exige uma nova solicitação ao Ollama.</p><div id="reviewNote" class="reviewNote">Sem processamento em segundo plano no momento.</div></div></section>
    <section class="panel"><div class="phead"><h2>REGISTRO DE EVENTOS</h2><button type="button" class="secondary" id="export">Exportar JSON</button></div><div class="events" id="events" aria-live="polite"></div></section>
   </div>
  </main>
- <footer class="footer">HIDRA Autoforma v0.1 — protótipo independente inspirado na arquitetura de <a href="https://github.com/CHURRUSS/Hidra-Mobile" rel="noreferrer" target="_blank">CHURRUSS/Hidra-Mobile</a>. A integração opcional utiliza <code>POST /mobile/api/ai/chat</code> e o campo <code>text</code>; o servidor Python e o Ollama não fazem parte deste arquivo. Chave e endereço permanecem somente na memória da página até ela ser fechada ou recarregada.</footer>
+ <footer class="footer">HIDRA Autoforma v0.2 — protótipo independente inspirado na arquitetura de <a href="https://github.com/CHURRUSS/Hidra-Mobile" rel="noreferrer" target="_blank">CHURRUSS/Hidra-Mobile</a>. A integração opcional utiliza <code>POST /mobile/api/ai/chat</code> e o campo <code>text</code>. Cada revisão real corresponde a uma nova mensagem enviada à API compartilhada, que pode registrar a interação; o servidor Python e o Ollama não fazem parte deste arquivo. Chave e endereço permanecem somente na memória da página até ela ser fechada ou recarregada.</footer>
 </div>
 <script>
 (()=>{'use strict';
@@ -69,7 +74,7 @@ function meterUI(){for(const [name,key] of labels){const r=document.createElemen
 function updateMeter(){for(const key of order){const value=Math.round(targets[key]*100);$('fill-'+key).style.width=value+'%';$('score-'+key).textContent=value}}
 function setTargets(obj){for(const key of order)if(obj[key]!==undefined)targets[key]=Math.max(0,Math.min(1,Number(obj[key])||0));updateMeter()}
 function resetTargets(){setTargets({identity:.42,attention:.12,memory:.08,uncertainty:.08,conflict:.06,decision:.08,objective:.22,selfModel:.26})}
-function setPhase(name,caption){phase=name;$('phase').textContent=caption;$('clock').textContent=name==='repouso'?'SEM PROCESSAMENTO':(Math.max(0,(performance.now()-start)/1000).toFixed(1)+' S');}
+function setPhase(name,caption){phase=name;$('phase').textContent=caption;$('clock').textContent=(name==='repouso'||name==='vigilia')?'SEM PROCESSAMENTO':(Math.max(0,(performance.now()-start)/1000).toFixed(1)+' S');}
 const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 function features(prompt,response){const p=norm(prompt),r=norm(response),words=r.trim().split(/\s+/).filter(Boolean).length;const count=(re)=>((r.match(re)||[]).length);return {
 identity:Math.min(1,.2+count(/\b(sou|hidra|assistente|identidade|fui criada)\b/g)*.14+(p.includes('quem')?.1:0)),
@@ -81,24 +86,95 @@ objective:Math.min(1,.2+count(/\b(objetivo|ajudar|tarefa|orientar|solucionar)\b/
 selfModel:Math.min(1,.14+count(/\b(modelo|sistema|assistente|limite|nao tenho|posso)\b/g)*.13)
 }}
 function example(prompt){const p=norm(prompt);if(/(quem|identidade|nome|voce e)/.test(p))return 'Eu sou a HIDRA, uma assistente digital. Posso responder perguntas e executar funções definidas pelo meu sistema. Minha descrição de mim mesma é uma representação funcional; ela não comprova consciência.';if(/(lembra|memoria|passado)/.test(p))return 'Nesta simulação, tenho somente as informações disponíveis neste experimento. Memória persistente e continuidade entre sessões precisariam de um mecanismo separado de armazenamento.';if(/(duvida|hipotese|fato|certeza)/.test(p))return 'Posso distinguir fatos fornecidos, hipóteses e informações incertas. Quando faltam evidências, devo admitir que não sei em vez de inventar uma certeza.';if(/(conflito|duas instrucoes|decide|decisao)/.test(p))return 'Se duas instruções entrarem em conflito, devo considerar regras, objetivos e contexto. Comparo alternativas antes de escolher a resposta mais adequada. Isto descreve um procedimento funcional.';return 'Esta é uma resposta simulada para observar a transformação de texto em estados visíveis. Nenhum modelo de IA foi consultado neste modo.'}
-function buttons(on){busy=on;$('send').disabled=on;$('cancel').disabled=!on;$('realMode').disabled=on;$('demoMode').disabled=on}
-function cancelCurrent(){runId++;if(abort){abort.abort();abort=null}for(const timer of animations)clearTimeout(timer);animations=[];buttons(false);setPhase('repouso','EXPERIMENTO INTERROMPIDO');log('stop','Execução interrompida pelo usuário.')}
-function finish(prompt,response,kind,elapsed){answer=response;$('answer').textContent=response;$('answer').classList.remove('muted');$('kind').textContent=kind;
-setTargets(features(prompt,response));setPhase('síntese','FORMA ATUALIZADA');log('result',kind+' · '+Math.round(elapsed)+' ms',{prompt,response,elapsed_ms:Math.round(elapsed),indicators:{...targets}});buttons(false);abort=null}
-function demo(prompt){const ticket=++runId;buttons(true);start=performance.now();setPhase('atenção','INTERPRETANDO ESTÍMULO');setTargets({attention:.91,objective:.62,decision:.08,uncertainty:.22});log('prompt','Estímulo de simulação: '+prompt,{prompt});
-const seq=[[450,()=>{setPhase('memória','SIMULANDO CONTEXTO');setTargets({memory:.62,selfModel:.48})}],[1000,()=>{setPhase('avaliação','SIMULANDO ALTERNATIVAS');setTargets({uncertainty:.57,conflict:.42,decision:.31})}],[1700,()=>{if(ticket===runId)finish(prompt,example(prompt),'RESPOSTA SIMULADA',performance.now()-start)}]];
-for(const [delay,callback] of seq){animations.push(setTimeout(()=>{if(ticket===runId)callback()},delay))}}
-async function real(prompt){const server=$('endpoint').value.trim().replace(/\/+$/,'');const token=$('token').value.trim();if(!server||!token){log('error','Preencha o endereço HTTPS e a chave.');return}if(!$('consent').checked){log('error','Marque a confirmação sobre o histórico do servidor antes do envio.');return}
+// Um ciclo significa uma solicitação adicional ao modelo, não uma observação oculta.
+let reviewing=false;
+function buttons(on){busy=on;$('send').disabled=on;$('cancel').disabled=!on;$('realMode').disabled=on;$('demoMode').disabled=on;$('reflectReal').disabled=on;$('cycles').disabled=on}
+function markStep(step){const keys=['response','review','evaluate','idle'],idx=keys.indexOf(step);for(const el of $('thoughtSteps').children){const j=keys.indexOf(el.dataset.step);el.classList.toggle('active',j===idx);el.classList.toggle('done',idx>=0&&j<idx)}}
+function sayReflection(text,type,note){$('reflection').textContent=text;$('reflection').classList.remove('muted','error');if(type)$('reviewKind').textContent=type;if(note)$('reviewNote').textContent=note}
+function cancelCurrent(){runId++;if(abort){abort.abort();abort=null}for(const timer of animations)clearTimeout(timer);animations=[];reviewing=false;buttons(false);setPhase('vigilia','EXPERIMENTO INTERROMPIDO');sayReflection('Reavaliação interrompida. A resposta anterior permanece exibida.','INTERROMPIDO','Uma requisição já recebida pelo servidor pode ter sido registrada mesmo após o cancelamento.');log('stop','Execução interrompida pelo usuário. Nenhum estado remoto foi apagado.')}
+function sleep(ms,ticket){return new Promise(resolve=>{const handle=setTimeout(()=>resolve(ticket===runId),ms);animations.push(handle)})}
+function finish(prompt,response,kind,elapsed){answer=response;$('answer').textContent=response;$('answer').classList.remove('muted','error');$('kind').textContent=kind;setTargets(features(prompt,response));markStep('response');setPhase('resposta','RESPOSTA RECEBIDA · PREPARANDO REVISÃO');log('result',kind+' · '+Math.round(elapsed)+' ms',{prompt,response,elapsed_ms:Math.round(elapsed),indicators:{...targets}})}
+function resetReview(){markStep(null);$('reflection').textContent='Aguardando uma resposta para iniciar a análise pós-resposta.';$('reflection').className='muted';$('reviewKind').textContent='AGUARDANDO';$('reviewNote').textContent='A opção de revisão real envia uma nova mensagem ao servidor. A simulação não consulta o Ollama.'}
+function estimateEcho(prompt,response){const r=norm(response);let note=[];
+ if(r.includes('nao sei')||r.includes('nao tenho'))note.push('A resposta reconhece uma limitação.');
+ if(r.includes('sou')||r.includes('hidra'))note.push('A resposta contém uma descrição de identidade.');
+ if(/criador|criada|criado/.test(norm(prompt)) && !/certeza|sei|confirm/.test(r))note.push('Há uma afirmação de autoria a verificar.');
+ if(!note.length)note.push('O texto foi analisado por palavras e estruturas, sem nova chamada ao modelo.');
+ return note.join(' ')+' Essa observação foi calculada no navegador e não é uma reflexão da IA.'}
+function safePrompt(value,max=1050){return String(value||'').slice(0,max).replace(/[\\`]/g,' ')}
+function auditPrompt(original,response,prior,cycle){const follow=cycle>1?'Considere também sua revisão anterior abaixo e diga se ela melhora a avaliação.':'Analise a resposta que você acabou de gerar.';
+return 'HIDRA // EXPERIÊNCIA DE AUTOAVALIAÇÃO FUNCIONAL — RODADA '+cycle+'\n'+
+'Esta é uma nova solicitação explícita de auditoria; não é memória interna, sensação nem prova de consciência. '+follow+' '+
+'Não invente identidade, dados do usuário, memórias, consciência, emoções ou certeza. Se não houver dados, indique isso. Se houver afirmações sobre autoria, diferencie quem criou o projeto de quem desenvolveu o modelo ou suas ferramentas. '+
+'Não execute ações e não prometa armazenar nada. Seja objetiva, até 100 palavras. Responda em português com exatamente três linhas rotuladas:\n'+
+'OBSERVEI: algo concreto sobre sua resposta anterior.\nDÚVIDA: uma incerteza ou limitação justificável.\nREVISARIA: uma correção ou uma frase melhor, se necessário.\n\n'+
+'PERGUNTA ORIGINAL: «'+safePrompt(original,500)+'»\n'+
+'SUA RESPOSTA ANTERIOR: «'+safePrompt(response,1250)+'»\n'+
+(prior?'REAVALIAÇÃO ANTERIOR: «'+safePrompt(prior,800)+'»\n':'');}
+async function postChat(url,token,message,ticket){const ctl=new AbortController();abort=ctl;const timeout=setTimeout(()=>ctl.abort(),155000);try{
+ const res=await fetch(url+'/mobile/api/ai/chat',{method:'POST',mode:'cors',signal:ctl.signal,headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({text:message})});
+ let data;try{data=await res.json()}catch(e){throw Error('O servidor retornou formato diferente de JSON.')}if(!res.ok)throw Error(data.error||'HTTP '+res.status);
+ if(ticket!==runId)return null;const value=typeof data.text==='string'?data.text.trim():'';if(!value)throw Error('Resposta sem o campo text.');return value;
+ }finally{clearTimeout(timeout);if(abort===ctl)abort=null}}
+async function afterResponse(prompt,response,ticket,remote){
+ reviewing=true;
+ try{
+  if(!await sleep(900,ticket))return;
+  markStep('review');setPhase('releitura','REVISITANDO A RESPOSTA');setTargets({attention:.83,memory:.44,uncertainty:.30,decision:.18,selfModel:.61});
+  sayReflection('Reexaminando a resposta fornecida…',remote?'PREPARANDO AUTORREVISÃO':'ECO VISUAL LOCAL',remote?'Preparando uma nova chamada ao Ollama se a opção de reflexão estiver ativa.':'Este é um processamento local de texto, não uma segunda resposta do modelo.');
+  if(!await sleep(800,ticket))return;
+  markStep('evaluate');
+  if(remote&&$('reflectReal').checked){
+   const server=$('endpoint').value.trim().replace(/\/+$/,'');const token=$('token').value.trim(),cycles=Math.min(3,Math.max(1,parseInt($('cycles').value,10)||1));
+   let preceding='';
+   for(let round=1;round<=cycles;round++){
+     if(ticket!==runId)return;
+     setPhase('reflexao','OLLAMA REAVALIANDO · '+round+'/'+cycles);
+     $('liveMode').textContent='API REAL · REFLEXÃO '+round+'/'+cycles;
+     setTargets({attention:.94,memory:.58,uncertainty:.52,conflict:Math.min(.68,.16+round*.16),decision:.24,selfModel:.76});
+     sayReflection('Consultando a Hidra novamente para analisar a resposta anterior (rodada '+round+' de '+cycles+').', 'REFLEXÃO REAL · '+round+'/'+cycles,'Esta etapa envia outra mensagem a /mobile/api/ai/chat e pode ser salva no histórico do servidor.');
+     log('review_prompt','Solicitada reavaliação real pelo Ollama · rodada '+round+'/'+cycles,{round,total:cycles});
+     const startReview=performance.now();
+     let reflection;
+     try{reflection=await postChat(server,token,auditPrompt(prompt,response,preceding,round),ticket)}
+     catch(e){if(ticket!==runId)return;let message=e.name==='AbortError'?'Tempo limite da reflexão.':e.message;log('review_error','Falha na revisão: '+message,{round});$('reflection').textContent='A resposta inicial foi recebida, mas a reavaliação não foi concluída: '+message;$('reflection').classList.add('error');$('reviewKind').textContent='REVISÃO NÃO CONCLUÍDA';break}
+     if(ticket!==runId||!reflection)return;
+     preceding=reflection;sayReflection(reflection,'REFLEXÃO REAL · '+round+'/'+cycles,'Texto produzido por uma nova resposta da IA, não por leitura do processamento interno.');
+     const featuresReview=features(prompt,response+' '+reflection);setTargets({...featuresReview,attention:.72,decision:.76,selfModel:Math.max(.6,featuresReview.selfModel)});
+     log('review_result','Reavaliação recebida · rodada '+round+'/'+cycles,{round,reflection,elapsed_ms:Math.round(performance.now()-startReview),indicators:{...targets}});
+     if(round<cycles){setPhase('intervalo','PAUSA ENTRE REFLEXÕES');if(!await sleep(3500,ticket))return;}
+   }
+  }else{
+   setPhase('avaliacao','ANÁLISE LOCAL PÓS-RESPOSTA');setTargets({...features(prompt,response),attention:.72,decision:.49,uncertainty:.33,memory:.34});
+   const simulated=estimateEcho(prompt,response);
+   sayReflection(simulated,remote?'SEM NOVA CHAMADA AO OLLAMA':'ANÁLISE SIMULADA',remote?'Para obter uma reflexão do modelo, marque “Refletir de verdade após responder” antes do próximo envio.':'Simulação local de pós-processamento. Nenhum modelo foi consultado.');
+   log('local_review','Pós-análise heurística, sem chamada ao modelo.',{analysis:simulated,indicators:{...targets}});
+   if(!await sleep(1500,ticket))return;
+  }
+  if(ticket!==runId)return;
+  markStep('idle');setPhase('vigilia','VIGÍLIA VISUAL · IA EM REPOUSO');
+  $('liveMode').textContent=remote?'API REAL · SEM PROCESSAMENTO':'SIMULAÇÃO · SEM PROCESSAMENTO';
+  if(!$('reflection').classList.contains('error'))$('reviewNote').textContent+=' A forma continua animada em modo de vigília, sem consultas adicionais.';
+  log('idle','Análise encerrada; núcleo em vigília visual sem processamento autônomo.');
+ }finally{if(ticket===runId){reviewing=false;buttons(false);abort=null}}
+}
+async function demo(prompt){const ticket=++runId;buttons(true);resetReview();start=performance.now();setPhase('atenção','INTERPRETANDO ESTÍMULO SIMULADO');setTargets({attention:.91,objective:.62,decision:.08,uncertainty:.22});log('prompt','Estímulo de simulação: '+prompt,{prompt});
+ if(!await sleep(450,ticket))return;setPhase('memória','SIMULANDO CONTEXTO');setTargets({memory:.62,selfModel:.48});
+ if(!await sleep(550,ticket))return;setPhase('avaliação','SIMULANDO ALTERNATIVAS');setTargets({uncertainty:.57,conflict:.42,decision:.31});
+ if(!await sleep(700,ticket))return;const response=example(prompt);finish(prompt,response,'RESPOSTA SIMULADA',performance.now()-start);await afterResponse(prompt,response,ticket,false);
+}
+async function real(prompt){const server=$('endpoint').value.trim().replace(/\/+$/,'');const token=$('token').value.trim();if(!server||!token){log('error','Preencha o endereço HTTPS e a chave.');return}if(!$('consent').checked){log('error','Marque a confirmação sobre histórico e reavaliações antes do envio.');return}
 let url;try{url=new URL(server);if(url.protocol!=='https:'&&!(url.protocol==='http:'&&['localhost','127.0.0.1'].includes(url.hostname)))throw Error('Use HTTPS (ou localhost em testes locais).');if(url.username||url.password||url.search||url.hash)throw Error('Informe somente a URL base do servidor.');}catch(e){log('error','URL inválida: '+e.message);return}
-const ticket=++runId;start=performance.now();buttons(true);setPhase('aguardando','AGUARDANDO RESPOSTA DA API');setTargets({attention:.92,objective:.69,memory:.2,uncertainty:.17,decision:.05});log('prompt','Mensagem enviada à API da Hidra real (pode constar no histórico).',{prompt});abort=new AbortController();const ctl=abort;const timeout=setTimeout(()=>ctl.abort(),155000);
-try{const res=await fetch(url.origin+url.pathname.replace(/\/$/,'')+'/mobile/api/ai/chat',{method:'POST',mode:'cors',signal:ctl.signal,headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({text:prompt})});let data;try{data=await res.json()}catch(e){throw Error('Resposta não está em formato JSON.')}if(!res.ok)throw Error(data.error||'HTTP '+res.status);if(ticket!==runId)return;const response=typeof data.text==='string'?data.text:'';if(!response)throw Error('O servidor não retornou o campo text.');finish(prompt,response,'RESPOSTA DA API REAL',performance.now()-start)}catch(e){if(ticket!==runId)return;setPhase('erro','FALHA NA COMUNICAÇÃO');$('kind').textContent='ERRO DE CONEXÃO';$('answer').textContent=(e.name==='AbortError'?'Tempo limite ou envio cancelado.':e.message)+'\n\nSe o navegador bloquear a conexão, confira o HTTPS e o CORS do servidor.';$('answer').classList.add('error');log('error','A API não respondeu: '+e.message);buttons(false)}finally{clearTimeout(timeout);if(abort===ctl)abort=null}}
+const ticket=++runId;start=performance.now();resetReview();buttons(true);setPhase('aguardando','AGUARDANDO RESPOSTA DA API');$('liveMode').textContent='API REAL · RESPONDENDO';setTargets({attention:.92,objective:.69,memory:.2,uncertainty:.17,decision:.05});log('prompt','Mensagem enviada à API real (pode constar no histórico).',{prompt});
+try{const response=await postChat(url.origin+url.pathname.replace(/\/$/,''),token,prompt,ticket);if(ticket!==runId||!response)return;finish(prompt,response,'RESPOSTA DA API REAL',performance.now()-start);await afterResponse(prompt,response,ticket,true)}
+catch(e){if(ticket!==runId)return;setPhase('erro','FALHA NA COMUNICAÇÃO');$('kind').textContent='ERRO DE CONEXÃO';$('answer').textContent=(e.name==='AbortError'?'Tempo limite da conexão.':e.message)+'\n\nConfira o HTTPS, CORS e a disponibilidade da API.';$('answer').classList.add('error');log('error','A API não respondeu: '+e.message);buttons(false)}}
 function send(){if(busy)return;const prompt=$('prompt').value.trim();if(!prompt){log('error','Escreva uma pergunta para iniciar.');return}if(mode==='demo')demo(prompt);else real(prompt)}
 $('send').addEventListener('click',send);$('cancel').addEventListener('click',()=>{if(busy)cancelCurrent()});$('prompt').addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();send()}});
 for(const btn of document.querySelectorAll('[data-prompt]'))btn.addEventListener('click',()=>$('prompt').value=btn.dataset.prompt);
-function setMode(next){if(busy)return;mode=next;$('serverArea').hidden=next!=='real';$('demoMode').classList.toggle('active',next==='demo');$('realMode').classList.toggle('active',next==='real');$('liveMode').textContent=next==='demo'?'SIMULAÇÃO LOCAL':'API REAL / HEURÍSTICAS';$('modeInfo').textContent=next==='demo'?'Nenhum dado sai deste arquivo. As respostas são exemplos pré-definidos, para testar apenas a visualização.':'Utiliza a mesma rota de conversa do Mobile. Somente a visualização e os logs deste laboratório são separados; a memória do servidor pode ser compartilhada.';log('mode','Modo alterado para '+(next==='real'?'API real':'simulação local')+'.')}
+function setMode(next){if(busy)return;mode=next;$('serverArea').hidden=next!=='real';$('demoMode').classList.toggle('active',next==='demo');$('realMode').classList.toggle('active',next==='real');$('liveMode').textContent=next==='demo'?'SIMULAÇÃO LOCAL':'API REAL / HEURÍSTICAS';$('modeInfo').textContent=next==='demo'?'Sem dados enviados ao servidor. Após cada exemplo, há uma leitura simulada do próprio texto e movimento de pós-resposta.':'Conversa e reavaliações usam a mesma API do Mobile; podem aparecer no histórico da Hidra real. Ative 1 rodada de reflexão para ver uma revisão gerada pelo modelo.';log('mode','Modo alterado para '+(next==='real'?'API real':'simulação local')+'.')}
 $('demoMode').addEventListener('click',()=>setMode('demo'));$('realMode').addEventListener('click',()=>setMode('real'));
-$('reset').addEventListener('click',()=>{if(busy)cancelCurrent();resetTargets();$('answer').textContent='Escolha um estímulo e toque em “Iniciar experimento”.';$('answer').className='muted';$('kind').textContent='AGUARDANDO TESTE';setPhase('repouso','NÚCLEO EM REPOUSO');logs=[];$('events').replaceChildren();log('reset','Laboratório visual reiniciado. Nenhuma memória remota foi apagada.')});
-$('export').addEventListener('click',()=>{const content=JSON.stringify({lab:'HIDRA Autoforma',version:'0.1',warning:'Indicadores heurísticos, não dados internos da IA',events:logs},null,2);const blob=new Blob([content],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hidra-autoforma-registros.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+$('reset').addEventListener('click',()=>{if(busy)cancelCurrent();resetTargets();$('answer').textContent='Escolha um estímulo e toque em “Iniciar experimento”.';$('answer').className='muted';$('kind').textContent='AGUARDANDO TESTE';resetReview();setPhase('repouso','NÚCLEO EM REPOUSO');logs=[];$('events').replaceChildren();log('reset','Laboratório visual reiniciado. Nenhum histórico do servidor foi apagado.')});
+$('export').addEventListener('click',()=>{const content=JSON.stringify({lab:'HIDRA Autoforma',version:'0.2',warning:'Revisões de IA são novas respostas de modelo; indicadores seguem heurísticos',events:logs},null,2);const blob=new Blob([content],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hidra-autoforma-registros-v02.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 function draw(ms){const rect=canvas.getBoundingClientRect(),w=rect.width,h=rect.height;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);const cX=w/2,cY=h/2,r=Math.min(w,h),t=reduce?0:(ms-t0)/1000,rad=r*.34;for(const key of order)vals[key]+=(targets[key]-vals[key])*.065;
 const active=phase!=='repouso'&&phase!=='erro',pulse=active?1:.34;
 // Anéis de referência e circuito central
@@ -106,13 +182,23 @@ ctx.save();ctx.translate(cX,cY);for(let k=0;k<4;k++){ctx.beginPath();ctx.strokeS
 for(let k=0;k<40;k++){const a=k*Math.PI*2/40+t*.017,rr=rad*1.21;ctx.fillStyle='rgba(102,205,245,'+(.1+(k%4)*.06)+')';ctx.fillRect(Math.cos(a)*rr,Math.sin(a)*rr,1.2,1.2)}
 const points=labels.map(([name,key],i)=>{const a=(i/8)*Math.PI*2-Math.PI/2;return {key,name,x:Math.cos(a)*rad*1.15,y:Math.sin(a)*rad*1.15,a,v:vals[key]}});
 points.forEach((p,i)=>{let strength=.18+p.v*.65;ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(p.x*.46+Math.sin(t*.45+i)*rad*.055,p.y*.51,p.x,p.y);ctx.strokeStyle='rgba('+(i%2?'164,109,253':'75,211,255')+','+strength+')';ctx.lineWidth=1.5+p.v*1.8;ctx.shadowColor=i%2?'#8454ff':'#30aaff';ctx.shadowBlur=8+p.v*14;ctx.stroke();ctx.shadowBlur=0;if(active){const q=(t*(.2+p.v*.25)+i*.17)%1;const px=p.x*q,py=p.y*q;ctx.fillStyle=i%2?'#c4a0ff':'#9cf1ff';ctx.beginPath();ctx.arc(px,py,Math.max(1.1,r*.004),0,Math.PI*2);ctx.fill()}});
+// Reflexão: ondulações mais fortes enquanto uma nova solicitação está em andamento; vigília visual suave após concluir.
+const liveReflection=phase==='reflexao'||phase==='releitura'||phase==='avaliacao'||phase==='avaliação';
+if(liveReflection||phase==='vigilia'){
+ const amount=liveReflection?3:1.2,rate=liveReflection?.32:.085;
+ for(let ring=0;ring<4;ring++){
+  const q=((t*rate)+ring*.26)%1;
+  ctx.beginPath();ctx.arc(0,0,rad*(.24+q*.95),0,Math.PI*2);
+  ctx.strokeStyle='rgba('+(liveReflection?'191,132,253':'90,198,223')+','+((1-q)*(liveReflection?.36:.095)*amount/2.5).toFixed(3)+')';ctx.lineWidth=liveReflection?1.5:.85;ctx.stroke();
+ }
+}
 // Geometria orgânica: intensidade corresponde aos estados representados, não a neurônios internos.
 const am=(vals.identity+vals.attention+vals.memory+vals.uncertainty+vals.conflict+vals.decision+vals.objective+vals.selfModel)/8;
 const radcore=rad*(.32+am*.12);for(let layer=3;layer>=0;layer--){ctx.beginPath();for(let i=0;i<=160;i++){const a=i*Math.PI*2/160;const wobble=1+.055*Math.sin(a*7+t*(.4+layer*.1))+.065*Math.sin(a*11-t*.64)+vals.conflict*.06*Math.sin(a*4+t*1.7);const rr=radcore*wobble*(1+layer*.13);const x=Math.cos(a)*rr,y=Math.sin(a)*rr;if(!i)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.closePath();ctx.strokeStyle=layer%2?'rgba(163,105,247,'+(.16+am*.18)+')':'rgba(69,203,248,'+(.3+am*.34)+')';ctx.lineWidth=1.5;ctx.shadowColor=layer%2?'#9a6dff':'#32c5ff';ctx.shadowBlur=15+am*24;ctx.stroke();ctx.shadowBlur=0}
 const gr=ctx.createRadialGradient(0,0,0,0,0,radcore*.98);gr.addColorStop(0,'rgba(58,212,255,.27)');gr.addColorStop(.7,'rgba(52,88,196,.13)');gr.addColorStop(1,'rgba(4,21,37,0)');ctx.fillStyle=gr;ctx.beginPath();ctx.arc(0,0,radcore,0,Math.PI*2);ctx.fill();ctx.fillStyle='#e8fbff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.shadowBlur=16;ctx.shadowColor='#33bdff';ctx.font='700 '+Math.max(28,r*.091)+'px system-ui';ctx.fillText('H',0,-r*.015);ctx.shadowBlur=0;ctx.fillStyle='#a4d5ee';ctx.font=Math.max(8,r*.022)+'px system-ui';ctx.fillText('IDENTIDADE',0,r*.082);
 const small=w<470;points.forEach((p,i)=>{const size=rad*(.087+p.v*.022);ctx.beginPath();ctx.arc(p.x,p.y,size*1.8,0,Math.PI*2);ctx.strokeStyle='rgba(96,180,244,'+(.12+p.v*.44)+')';ctx.lineWidth=1;ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,size,0,Math.PI*2);ctx.fillStyle='#091d34';ctx.fill();ctx.strokeStyle=i%2?'#af92fb':'#64d5ff';ctx.lineWidth=1.5+p.v*.9;ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,size*.38,0,Math.PI*2);ctx.fillStyle=i%2?'#c0a2ff':'#72e0ff';ctx.fill();ctx.font='600 '+Math.max(9,r*(small?.026:.025))+'px system-ui';ctx.textBaseline='middle';ctx.textAlign='center';ctx.fillStyle='#cdeeff';let lx=p.x+Math.cos(p.a)*Math.max(15,r*.048),ly=p.y+Math.sin(p.a)*Math.max(15,r*.048);if(small){lx=Math.max(-w*.43,Math.min(w*.43,lx));ly=Math.max(-h*.43,Math.min(h*.43,ly))}ctx.fillText(p.name,lx,ly)});ctx.restore()}
-function frame(ms){draw(ms);if(busy&&phase!=='repouso')$('clock').textContent=((ms-start)/1000).toFixed(1)+' S';requestAnimationFrame(frame)}
-meterUI();log('ready','Ambiente iniciado: simulação isolada, sem conexão com o servidor.');requestAnimationFrame(frame);
+let lastFrame=0;function frame(ms){requestAnimationFrame(frame);if(document.hidden||ms-lastFrame<33)return;lastFrame=ms;draw(ms);if(busy&&phase!=='repouso')$('clock').textContent=((ms-start)/1000).toFixed(1)+' S'}
+meterUI();resetReview();log('ready','Ambiente iniciado: simulação isolada, sem conexão com o servidor.');requestAnimationFrame(frame);
 })();
 </script>
 </body>
